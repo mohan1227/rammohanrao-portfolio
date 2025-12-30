@@ -117,19 +117,25 @@ export const Sidebar = () => {
       <Box sx={{ p: 3, textAlign: "center", position: "relative", zIndex: 1 }}>
         <Box
           sx={{
-            width: 100,
-            height: 100,
+            width: 140,
+            height: 140,
             borderRadius: "50%",
-            background: "linear-gradient(135deg, #8b5cf6 0%, #06b6d4 100%)",
             margin: "0 auto 16px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            fontSize: "2.5rem",
-            fontWeight: "bold",
-            color: "white",
+            overflow: "hidden",
+            border: "4px solid",
+            borderColor: "primary.main",
+            boxShadow: "0 4px 20px rgba(139, 92, 246, 0.3)",
           }}>
-          KR
+          <Box
+            component="img"
+            src="/rammohan.png"
+            alt="Rama Mohana Rao"
+            sx={{
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+            }}
+          />
         </Box>
         <Box sx={{ fontSize: "1.25rem", fontWeight: 600 }}>Rama Mohana Rao</Box>
         <Box sx={{ fontSize: "0.875rem", color: "text.secondary", mt: 0.5 }}>

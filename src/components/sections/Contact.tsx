@@ -3,11 +3,11 @@ import {
   Box,
   Button,
   Container,
-  Grid,
   Paper,
   TextField,
   Typography,
 } from "@mui/material";
+import Grid from "@mui/material/Grid";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useEffect, useRef } from "react";
@@ -18,37 +18,42 @@ export const Contact = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (sectionRef.current) {
-      gsap.fromTo(
-        sectionRef.current.querySelectorAll(".contact-item"),
-        { y: 50, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          stagger: 0.15,
-          duration: 0.8,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top 80%",
-          },
-        }
-      );
-    }
+    if (!sectionRef.current) return;
+
+    gsap.fromTo(
+      sectionRef.current.querySelectorAll(".contact-item"),
+      { y: 50, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        stagger: 0.15,
+        duration: 0.8,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 80%",
+          once: true,
+        },
+      }
+    );
   }, []);
 
   return (
     <Box
       id="contact"
       ref={sectionRef}
-      sx={{ py: 10, bgcolor: "background.paper" }}>
+      sx={{ py: 10, bgcolor: "background.paper" }}
+    >
       <Container maxWidth="lg">
+        {/* Header */}
         <Typography
           variant="h2"
           className="contact-item"
-          sx={{ mb: 2, textAlign: "center" }}>
+          sx={{ mb: 2, textAlign: "center" }}
+        >
           Get In Touch
         </Typography>
+
         <Box
           className="contact-item"
           sx={{
@@ -59,6 +64,7 @@ export const Contact = () => {
             mb: 2,
           }}
         />
+
         <Typography
           variant="body1"
           className="contact-item"
@@ -68,19 +74,31 @@ export const Contact = () => {
             mb: 6,
             maxWidth: 600,
             mx: "auto",
-          }}>
-          Feel free to reach out for collaborations, academic discussions, or
-          any inquiries
+          }}
+        >
+          Feel free to reach out for collaborations, academic discussions, or any
+          inquiries
         </Typography>
 
-        <Grid container spacing={4}>
-          <Grid item xs={12} md={5}>
-            <Box sx={{ display: "flex", flexDirection: "column", gap: 3 }}>
+        {/* Content */}
+        <Grid container spacing={4} alignItems="stretch">
+          {/* Left column */}
+          <Grid size={{ xs: 12, md: 4 }} sx={{ display: "flex" }}>
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                gap: 3,
+                width: "100%",
+              }}
+            >
+              {/* Email */}
               <Paper
                 className="contact-item"
                 elevation={0}
-                sx={{ p: 3, bgcolor: "background.default", borderRadius: 3 }}>
-                <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
+                sx={{ p: 3, bgcolor: "background.default", borderRadius: 3 }}
+              >
+                <Box sx={{ display: "flex", alignItems: "center" }}>
                   <Box
                     sx={{
                       width: 48,
@@ -92,27 +110,28 @@ export const Contact = () => {
                       alignItems: "center",
                       justifyContent: "center",
                       mr: 2,
-                    }}>
+                    }}
+                  >
                     <Email sx={{ color: "white" }} />
                   </Box>
                   <Box>
-                    <Typography
-                      variant="subtitle2"
-                      sx={{ color: "text.secondary" }}>
+                    <Typography variant="subtitle2" color="text.secondary">
                       Email
                     </Typography>
-                    <Typography variant="body1" sx={{ fontWeight: 500 }}>
+                    <Typography fontWeight={500}>
                       it.mohan@sasi.ac.in
                     </Typography>
                   </Box>
                 </Box>
               </Paper>
 
+              {/* Phone */}
               <Paper
                 className="contact-item"
                 elevation={0}
-                sx={{ p: 3, bgcolor: "background.default", borderRadius: 3 }}>
-                <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
+                sx={{ p: 3, bgcolor: "background.default", borderRadius: 3 }}
+              >
+                <Box sx={{ display: "flex", alignItems: "center" }}>
                   <Box
                     sx={{
                       width: 48,
@@ -124,27 +143,28 @@ export const Contact = () => {
                       alignItems: "center",
                       justifyContent: "center",
                       mr: 2,
-                    }}>
+                    }}
+                  >
                     <Phone sx={{ color: "white" }} />
                   </Box>
                   <Box>
-                    <Typography
-                      variant="subtitle2"
-                      sx={{ color: "text.secondary" }}>
+                    <Typography variant="subtitle2" color="text.secondary">
                       Phone
                     </Typography>
-                    <Typography variant="body1" sx={{ fontWeight: 500 }}>
+                    <Typography fontWeight={500}>
                       +91 8247369846
                     </Typography>
                   </Box>
                 </Box>
               </Paper>
 
+              {/* Address */}
               <Paper
                 className="contact-item"
                 elevation={0}
-                sx={{ p: 3, bgcolor: "background.default", borderRadius: 3 }}>
-                <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
+                sx={{ p: 3, bgcolor: "background.default", borderRadius: 3 }}
+              >
+                <Box sx={{ display: "flex", alignItems: "center" }}>
                   <Box
                     sx={{
                       width: 48,
@@ -156,21 +176,18 @@ export const Contact = () => {
                       alignItems: "center",
                       justifyContent: "center",
                       mr: 2,
-                    }}>
+                    }}
+                  >
                     <LocationOn sx={{ color: "white" }} />
                   </Box>
                   <Box>
-                    <Typography
-                      variant="subtitle2"
-                      sx={{ color: "text.secondary" }}>
+                    <Typography variant="subtitle2" color="text.secondary">
                       Address
                     </Typography>
-                    <Typography variant="body1" sx={{ fontWeight: 500 }}>
+                    <Typography fontWeight={500}>
                       Sasi Institute of Technology
                     </Typography>
-                    <Typography
-                      variant="body2"
-                      sx={{ color: "text.secondary" }}>
+                    <Typography variant="body2" color="text.secondary">
                       Tadepalligudem, West Godavari, AP
                     </Typography>
                   </Box>
@@ -179,49 +196,64 @@ export const Contact = () => {
             </Box>
           </Grid>
 
-          <Grid item xs={12} md={7}>
+          {/* Right column */}
+          <Grid size={{ xs: 12, md: 8 }} sx={{ display: "flex" }}>
             <Paper
               className="contact-item"
               elevation={0}
-              sx={{ p: 4, bgcolor: "background.default", borderRadius: 3 }}>
-              <Typography variant="h6" sx={{ mb: 3, fontWeight: 600 }}>
+              sx={{
+                p: 4,
+                bgcolor: "background.default",
+                borderRadius: 3,
+                width: "100%",
+                height: "100%",
+                display: "flex",
+                flexDirection: "column",
+              }}
+            >
+              <Typography variant="h6" fontWeight={600} mb={3}>
                 Send a Message
               </Typography>
+
               <Box
                 component="form"
-                sx={{ display: "flex", flexDirection: "column", gap: 3 }}>
-                <TextField fullWidth label="Your Name" variant="outlined" />
-                <TextField
-                  fullWidth
-                  label="Your Email"
-                  variant="outlined"
-                  type="email"
-                />
-                <TextField fullWidth label="Subject" variant="outlined" />
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: 3,
+                  flex: 1,
+                }}
+              >
+                <TextField fullWidth label="Your Name" />
+                <TextField fullWidth label="Your Email" type="email" />
+                <TextField fullWidth label="Subject" />
                 <TextField
                   fullWidth
                   label="Message"
-                  variant="outlined"
                   multiline
-                  rows={4}
+                  minRows={8}
+                  sx={{ flex: 1 }}
                 />
+
                 <Button
                   variant="contained"
                   size="large"
                   endIcon={<Send />}
                   sx={{
-                    background:
-                      "linear-gradient(135deg, #8b5cf6 0%, #06b6d4 100%)",
+                    mt: "auto",
                     py: 1.5,
                     fontSize: "1rem",
+                    background:
+                      "linear-gradient(135deg, #8b5cf6 0%, #06b6d4 100%)",
+                    transition: "all 0.3s ease",
                     "&:hover": {
                       background:
                         "linear-gradient(135deg, #7c3aed 0%, #0891b2 100%)",
                       transform: "translateY(-2px)",
-                      boxShadow: "0 8px 24px rgba(139, 92, 246, 0.3)",
+                      boxShadow: "0 10px 28px rgba(139,92,246,0.35)",
                     },
-                    transition: "all 0.3s ease",
-                  }}>
+                  }}
+                >
                   Send Message
                 </Button>
               </Box>
