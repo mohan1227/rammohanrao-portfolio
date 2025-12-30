@@ -121,7 +121,7 @@ export const Sidebar = () => {
             height: 100,
             borderRadius: "50%",
             background: "linear-gradient(135deg, #8b5cf6 0%, #06b6d4 100%)",
-            margin: '0 auto 16px',
+            margin: "0 auto 16px",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
@@ -162,11 +162,22 @@ export const Sidebar = () => {
         ))}
       </List>
 
-      <Box sx={{ p: 3, display: 'flex', justifyContent: 'center', gap: 2, position: 'relative', zIndex: 1 }}>
-        <IconButton color="inherit" onClick={() => dispatch(toggleTheme())} sx={{ mb: 0.5 }}>
+      <Box
+        sx={{
+          p: 3,
+          display: "flex",
+          justifyContent: "center",
+          gap: 2,
+          position: "relative",
+          zIndex: 1,
+        }}>
+        <IconButton
+          color="inherit"
+          onClick={() => dispatch(toggleTheme())}
+          sx={{ mb: 0.5 }}>
           {themeMode === "dark" ? <Brightness7 /> : <Brightness4 />}
         </IconButton>
-        <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2 }}>
+        <Box sx={{ display: "flex", justifyContent: "center", gap: 2 }}>
           {socialLinks.map((link, index) => (
             <IconButton
               key={index}
@@ -175,7 +186,7 @@ export const Sidebar = () => {
               sx={{
                 color: "primary.main",
                 "&:hover": {
-                  transform: 'translateY(-4px)',
+                  transform: "translateY(-4px)",
                   transition: "all 0.3s ease",
                 },
               }}>
@@ -202,10 +213,10 @@ export const Sidebar = () => {
           sx={{
             width: 280,
             flexShrink: 0,
-            position: 'fixed',
+            position: "fixed",
             top: 0,
             left: 0,
-            height: '100vh',
+            height: "100vh",
             zIndex: (theme) => theme.zIndex.drawer,
           }}>
           {drawerContent}

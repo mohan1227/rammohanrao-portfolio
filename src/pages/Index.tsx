@@ -36,7 +36,7 @@ const Portfolio = () => {
         component="main"
         sx={{
           flexGrow: 1,
-          ml: { xs: 0, md: '280px' },
+          ml: { xs: 0, md: "280px" },
           mt: 0,
         }}>
         <Hero />
